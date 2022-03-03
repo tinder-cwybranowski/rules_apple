@@ -99,6 +99,12 @@ fi
 LAUNCH_OPTIONS_JSON_STR=""
 
 TEST_ENV="%(test_env)s"
+if [[ -n "$TEST_ENV" ]]; then
+  TEST_ENV="$TEST_ENV,TEST_SRCDIR=$TEST_SRCDIR"
+else
+  TEST_ENV="TEST_SRCDIR=$TEST_SRCDIR"
+fi
+
 if [[ -n "${TEST_ENV}" ]]; then
   # Converts the test env string to json format and addes it into launch
   # options string.
